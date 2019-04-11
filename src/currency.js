@@ -5,7 +5,6 @@ export default class Currency {
         this.abbreviation = abbreviation;
         this.symbol = symbol;
         this.flagURL = flagURL;
-        this.drawCurrency();
     }
 
     drawCurrency(){

@@ -13,3 +13,8 @@
 table, th, td {
     border: 1px solid black;
   }
+
+.tdImg{
+    float: left;
+    height: 25px;
+}

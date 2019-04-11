@@ -3,7 +3,6 @@ export default class CurrencyList{
     constructor(){
         var currencyArray = [];
        // this.addCurrency();
-        this.drawList();
        
     }
 
@@ -32,40 +31,72 @@ export default class CurrencyList{
         this.drawTableHeaders(currencyTableBody);
 
         if(this.currencyArray !== undefined){
-            this.currencyArray.forEach(element => {
-                this.drawTableRows(element)
+            this.currencyArray.forEach(currency => {
+                this.drawTableRows(currency)
             });
         }
 
     }
 
     drawTableHeaders(currencyTableBody){
+
+        var currencyTableRow = document.createElement('tr');
+        currencyTableRow.classList.add('currencyTableRow');
+        currencyTableBody.appendChild(currencyTableRow);
         
         var currencyTableHeader = document.createElement('th');
         currencyTableHeader.classList.add('currencyTableHeader');
         currencyTableHeader.innerHTML = 'Country, Currency symbol';
-        currencyTableBody.appendChild(currencyTableHeader);
+        currencyTableRow.appendChild(currencyTableHeader);
 
         var currencyTableHeader = document.createElement('th');
         currencyTableHeader.classList.add('currencyTableHeader');
         currencyTableHeader.innerHTML = 'Buying Rate';
-        currencyTableBody.appendChild(currencyTableHeader);
+        currencyTableRow.appendChild(currencyTableHeader);
 
         var currencyTableHeader = document.createElement('th');
         currencyTableHeader.classList.add('currencyTableHeader');
         currencyTableHeader.innerHTML = 'Median rate';
-        currencyTableBody.appendChild(currencyTableHeader);
+        currencyTableRow.appendChild(currencyTableHeader);
 
         var currencyTableHeader = document.createElement('th');
         currencyTableHeader.classList.add('currencyTableHeader');
         currencyTableHeader.innerHTML = 'Selling Rate';
-        currencyTableBody.appendChild(currencyTableHeader);
+        currencyTableRow.appendChild(currencyTableHeader);
 
+        /*
+        var currencyTableRow = document.createElement('tr');
+        currencyTableRow.classList.add('currencyTableRow');
+        currencyTableBody.appendChild(currencyTableRow);
+
+        
+        var currencyTableData = document.createElement('td');
+        currencyTableData.classList.add('currencyTableData');
+        currencyTableData.innerHTML = 'USD';
+
+        
+        currencyTableRow.appendChild(currencyTableData);
+        var img = document.createElement('img');
+        img.classList.add('tdImg');
+        img.src = "http://www.geonames.org/flags/l/us.gif";
+        currencyTableData.appendChild(img);
+        */
     }
 
-    drawTableRows(element){
-        var currencyRow = document.createElement('tr');
-        currencyRow.classList.add('currencyRow');
-        currencyTable.appendChild(currencyRow);
+    drawTableRows(currencyTableBody,currency){
+        var currencyTableRow = document.createElement('tr');
+        currencyTableRow.classList.add('currencyTableRow');
+        currencyTableBody.appendChild(currencyTableRow);
+
+        var currencyTableData = document.createElement('td');
+        currencyTableData.classList.add('currencyTableData');
+        currencyTableData.innerHTML = currency.abbreviation;
+        currencyTableRow.appendChild(currencyTableData);
+
+        var currencyImg = document.createElement('img');
+        currencyImg.classList.add('tdImg');
+        img.src = currency.flagURL;
+        currencyTableData.appendChild(currencyImg);
+        
     } 
 }
