@@ -5,7 +5,11 @@
             "name": "US Dollar",
             "abbreviation": "USD",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/us.gif"
+            "flagURL": "http://www.geonames.org/flags/l/us.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
+
         },
 
         {
@@ -13,7 +17,10 @@
             "name": "Euro",
             "abbreviation": "EUR",
             "symbol": "\u20AC",
-            "flagURL": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+            "flagURL": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
 
         {
@@ -21,7 +28,10 @@
             "name": "Japanese Yen",
             "abbreviation": "JPY",
             "symbol": "\u00A5",
-            "flagURL": "http://www.geonames.org/flags/l/jp.gif"
+            "flagURL": "http://www.geonames.org/flags/l/jp.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
 
         {
@@ -29,7 +39,10 @@
             "name": "British Pound",
             "abbreviation": "GBP",
             "symbol": "\u00A3",
-            "flagURL": "http://www.geonames.org/flags/l/uk.gif"
+            "flagURL": "http://www.geonames.org/flags/l/uk.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
 
         {
@@ -37,203 +50,290 @@
             "name": "Australian Dollar",
             "abbreviation": "AUD",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/au.gif"
+            "flagURL": "http://www.geonames.org/flags/l/au.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 6,
             "name": "Canadian Dollar",
             "abbreviation": "CAD",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/ca.gif"
+            "flagURL": "http://www.geonames.org/flags/l/ca.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 7,
             "name": "Swiss Franc",
             "abbreviation": "CHF",
             "symbol": "\u0043\u0048\u0046",
-            "flagURL": "http://www.geonames.org/flags/l/ch.gif"
+            "flagURL": "http://www.geonames.org/flags/l/ch.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 8,
             "name": "Chinese Yuan Renminbi",
             "abbreviation": "CNY",
             "symbol": "\u00A5",
-            "flagURL": "http://www.geonames.org/flags/l/cn.gif"
+            "flagURL": "http://www.geonames.org/flags/l/cn.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 9,
             "name": "Swedish Krona",
             "abbreviation": "SEK",
             "symbol": "\u006B\u0072",
-            "flagURL": "http://www.geonames.org/flags/l/se.gif"
+            "flagURL": "http://www.geonames.org/flags/l/se.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 10,
             "name": "New Zealand Dollar",
             "abbreviation": "NZD",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/nz.gif"
+            "flagURL": "http://www.geonames.org/flags/l/nz.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 11,
             "name": "Mexican Peso",
             "abbreviation": "MXN",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/mx.gif"
+            "flagURL": "http://www.geonames.org/flags/l/mx.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 12,
             "name": "Singapore Dollar",
             "abbreviation": "SGD",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/sg.gif"
+            "flagURL": "http://www.geonames.org/flags/l/sg.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 13,
             "name": "Hong Kong Dollar",
             "abbreviation": "HKD",
             "symbol": "\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/hk.gif"
+            "flagURL": "http://www.geonames.org/flags/l/hk.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 14,
            "name": "Norwegian Krone",
             "abbreviation": "NOK",
             "symbol": "\u006B\u0072",
-            "flagURL": "http://www.geonames.org/flags/l/no.gif"
+            "flagURL": "http://www.geonames.org/flags/l/no.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 15,
            "name": "South Korean Won",
             "abbreviation": "KRW",
             "symbol": "\u20A9",
-            "flagURL": "http://www.geonames.org/flags/l/kr.gif"
+            "flagURL": "http://www.geonames.org/flags/l/kr.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 16,
            "name": "Turkish Lira",
             "abbreviation": "TRY",
             "symbol": "\u20BA",
-            "flagURL": "http://www.geonames.org/flags/l/tr.gif"
+            "flagURL": "http://www.geonames.org/flags/l/tr.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 17,
            "name": "Russian Ruble",
             "abbreviation": "RUB",
             "symbol": "\u20BD",
-            "flagURL": "http://www.geonames.org/flags/l/ru.gif"
+            "flagURL": "http://www.geonames.org/flags/l/ru.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 18,
            "name": "Indian Rupee",
             "abbreviation": "INR",
             "symbol": "\u20B9",
-            "flagURL": "http://www.geonames.org/flags/l/in.gif"
+            "flagURL": "http://www.geonames.org/flags/l/in.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 19,
            "name": "Brazilian Real",
             "abbreviation": "BRL",
             "symbol": "\u0052\u0024",
-            "flagURL": "http://www.geonames.org/flags/l/br.gif"
+            "flagURL": "http://www.geonames.org/flags/l/br.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 20,
            "name": "South African Rand",
             "abbreviation": "ZAR",
             "symbol": "\u0052",
-            "flagURL": "http://www.geonames.org/flags/l/za.gif"
+            "flagURL": "http://www.geonames.org/flags/l/za.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 21,
            "name": "Philippine Peso",
             "abbreviation": "PHP",
             "symbol": "\u20B1",
-            "flagURL": "http://www.geonames.org/flags/l/ph.gif"
+            "flagURL": "http://www.geonames.org/flags/l/ph.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 22,
            "name": "Czech Koruna",
             "abbreviation": "CZK",
             "symbol": "\u004B\u010D",
-            "flagURL": "http://www.geonames.org/flags/l/cz.gif"
+            "flagURL": "http://www.geonames.org/flags/l/cz.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 23,
            "name": "Indonesian Rupiah",
             "abbreviation": "IDR",
             "symbol": "\u0052\u0070",
-            "flagURL": "http://www.geonames.org/flags/l/id.gif"
+            "flagURL": "http://www.geonames.org/flags/l/id.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 24,
            "name": "Malaysian Ringgit",
             "abbreviation": "MYR",
             "symbol": "\u0052\u004D",
-            "flagURL": "http://www.geonames.org/flags/l/my.gif"
+            "flagURL": "http://www.geonames.org/flags/l/my.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 25,
            "name": "Hungarian Forint",
             "abbreviation": "HUF",
             "symbol": "\u0046\u0074",
-            "flagURL": "http://www.geonames.org/flags/l/hu.gif"
+            "flagURL": "http://www.geonames.org/flags/l/hu.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 26,
            "name": "Icelandic Krona",
             "abbreviation": "ISK",
             "symbol": "\u006B\u0072",
-            "flagURL": "http://www.geonames.org/flags/l/is.gif"
+            "flagURL": "http://www.geonames.org/flags/l/is.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 27,
            "name": "Croatian Kuna",
             "abbreviation": "HRK",
             "symbol": "\u006B\u006E",
-            "flagURL": "http://www.geonames.org/flags/l/hr.gif"
+            "flagURL": "http://www.geonames.org/flags/l/hr.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 28,
            "name": "Bulgarian Lev",
             "abbreviation": "BGN",
             "symbol": "\u043B\u0432",
-            "flagURL": "http://www.geonames.org/flags/l/bg.gif"
+            "flagURL": "http://www.geonames.org/flags/l/bg.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 29,
            "name": "Romanian Leu",
             "abbreviation": "RON",
             "symbol": "\u006C\u0065\u0069",
-            "flagURL": "http://www.geonames.org/flags/l/ro.gif"
+            "flagURL": "http://www.geonames.org/flags/l/ro.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 30,
            "name": "Danish Krone",
             "abbreviation": "DKK",
             "symbol": "\u006B\u0072",
-            "flagURL": "http://www.geonames.org/flags/l/dk.gif"
+            "flagURL": "http://www.geonames.org/flags/l/dk.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 31,
            "name": "Thai Baht",
             "abbreviation": "THB",
             "symbol": "\u0E3F",
-            "flagURL": "http://www.geonames.org/flags/l/th.gif"
+            "flagURL": "http://www.geonames.org/flags/l/th.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 32,
            "name": "Polish Zloty",
             "abbreviation": "PLN",
             "symbol": "\u007A\u0142",
-            "flagURL": "http://www.geonames.org/flags/l/pl.gif"
+            "flagURL": "http://www.geonames.org/flags/l/pl.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         },
         {
             "id": 33,
            "name": "Israeli Shekel",
             "abbreviation": "ILS",
             "symbol": "\u20AA",
-            "flagURL": "http://www.geonames.org/flags/l/il.gif"
+            "flagURL": "http://www.geonames.org/flags/l/il.gif",
+            "buyingRate": 150 ,
+            "medianRate" : 150 ,
+            "sellingRate" : 150
         }
        
     ]

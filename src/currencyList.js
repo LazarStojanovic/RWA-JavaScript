@@ -2,9 +2,17 @@
 export default class CurrencyList{
     constructor(){
         var currencyArray = [];
-       // this.addCurrency();
        
     }
+
+    //funkcija koja dodaje inicojalno prve 4-5 valute!, kako lista ne bi bila prazna na pocetku
+
+    //dugme koje dodaje valute u listu valuta
+    
+    //dugme koje brise valutu iz liste
+
+    //napraviti fetch u currency koji vraca valutu u odnosu na primljeni id (napraviti da currency prima neki broj za koji se ispituje da li takva valuta postoji u vazi ili ne)
+    //ova funkcija ce ucitati valutu iz baze pretvoriti je iz json response u js objekat i taj objekat pushovati u currency Array
 
     /*addCurrency(currency){
         this.currencyArray.push(currency);
@@ -97,6 +105,21 @@ export default class CurrencyList{
         currencyImg.classList.add('tdImg');
         img.src = currency.flagURL;
         currencyTableData.appendChild(currencyImg);
+
+        var currencyTableData = document.createElement('td');
+        currencyTableData.classList.add('currencyTableData');
+        currencyTableData.innerHTML = currency.buyingRate;
+        currencyTableRow.appendChild(currencyTableData);
+
+        var currencyTableData = document.createElement('td');
+        currencyTableData.classList.add('currencyTableData');
+        currencyTableData.innerHTML = currency.medianRate;
+        currencyTableRow.appendChild(currencyTableData);
+
+        var currencyTableData = document.createElement('td');
+        currencyTableData.classList.add('currencyTableData');
+        currencyTableData.innerHTML = currency.sellingRate;
+        currencyTableRow.appendChild(currencyTableData);
         
     } 
 }
