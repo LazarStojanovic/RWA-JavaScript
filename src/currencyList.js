@@ -1,22 +1,42 @@
+import currency from './currency';
 
 export default class CurrencyList{
     constructor(){
-        var currencyArray = [];
+        this.initialCurrencyArray = [1,2,3,4,5];
+        this.currencyArray=[];
+        this.currency;
+        this.i;
        
     }
 
-    //funkcija koja dodaje inicojalno prve 4-5 valute!, kako lista ne bi bila prazna na pocetku
+    fetchCurrency(i){
+        return new Promise((resolve,reject) => {
+            const error = false;
+            this.currency = new currency(i);
+            if(!error){
+                resolve(this.currency)
+            }else{
+                reject('Error:Something went wrong');
+            }
+    
+        });
+    }
+    addInitialCurrency(){
+            this.initialCurrencyArray.forEach(currencyId => {
+                this.fetchCurrency(currencyId)
+                     .then(currency =>{this.currencyArray.push(currency)})
+            });   
+        }  
 
+    addCurrencyDb(){
+        for(let i = 6;i<33;i++){
+                this.fetchCurrency(i)
+                    .then(currency =>{this.currencyArray.push(currency)})
+        }   
+    }
     //dugme koje dodaje valute u listu valuta
     
     //dugme koje brise valutu iz liste
-
-    //napraviti fetch u currency koji vraca valutu u odnosu na primljeni id (napraviti da currency prima neki broj za koji se ispituje da li takva valuta postoji u vazi ili ne)
-    //ova funkcija ce ucitati valutu iz baze pretvoriti je iz json response u js objekat i taj objekat pushovati u currency Array
-
-    /*addCurrency(currency){
-        this.currencyArray.push(currency);
-    }*/
 
     drawList()
     {
@@ -38,11 +58,14 @@ export default class CurrencyList{
         
         this.drawTableHeaders(currencyTableBody);
 
-        if(this.currencyArray !== undefined){
+        this.addInitialCurrency();
+
+        setTimeout(()=>{
             this.currencyArray.forEach(currency => {
-                this.drawTableRows(currency)
-            });
-        }
+                this.drawTableRows(currencyTableBody,currency)
+            })
+        },400)
+         
 
     }
 
@@ -71,27 +94,10 @@ export default class CurrencyList{
         currencyTableHeader.classList.add('currencyTableHeader');
         currencyTableHeader.innerHTML = 'Selling Rate';
         currencyTableRow.appendChild(currencyTableHeader);
-
-        /*
-        var currencyTableRow = document.createElement('tr');
-        currencyTableRow.classList.add('currencyTableRow');
-        currencyTableBody.appendChild(currencyTableRow);
-
-        
-        var currencyTableData = document.createElement('td');
-        currencyTableData.classList.add('currencyTableData');
-        currencyTableData.innerHTML = 'USD';
-
-        
-        currencyTableRow.appendChild(currencyTableData);
-        var img = document.createElement('img');
-        img.classList.add('tdImg');
-        img.src = "http://www.geonames.org/flags/l/us.gif";
-        currencyTableData.appendChild(img);
-        */
     }
 
     drawTableRows(currencyTableBody,currency){
+
         var currencyTableRow = document.createElement('tr');
         currencyTableRow.classList.add('currencyTableRow');
         currencyTableBody.appendChild(currencyTableRow);
@@ -103,7 +109,7 @@ export default class CurrencyList{
 
         var currencyImg = document.createElement('img');
         currencyImg.classList.add('tdImg');
-        img.src = currency.flagURL;
+        currencyImg.src = currency.flagUrl;
         currencyTableData.appendChild(currencyImg);
 
         var currencyTableData = document.createElement('td');

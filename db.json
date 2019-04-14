@@ -6,9 +6,9 @@
             "abbreviation": "USD",
             "symbol": "\u0024",
             "flagURL": "http://www.geonames.org/flags/l/us.gif",
-            "buyingRate": 150 ,
-            "medianRate" : 150 ,
-            "sellingRate" : 150
+            "buyingRate": 650 ,
+            "medianRate" : 110 ,
+            "sellingRate" : 550
 
         },
 
@@ -18,9 +18,9 @@
             "abbreviation": "EUR",
             "symbol": "\u20AC",
             "flagURL": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
-            "buyingRate": 150 ,
-            "medianRate" : 150 ,
-            "sellingRate" : 150
+            "buyingRate": 123 ,
+            "medianRate" : 120 ,
+            "sellingRate" : 160
         },
 
         {
@@ -29,8 +29,8 @@
             "abbreviation": "JPY",
             "symbol": "\u00A5",
             "flagURL": "http://www.geonames.org/flags/l/jp.gif",
-            "buyingRate": 150 ,
-            "medianRate" : 150 ,
+            "buyingRate": 350 ,
+            "medianRate" : 950 ,
             "sellingRate" : 150
         },
 
