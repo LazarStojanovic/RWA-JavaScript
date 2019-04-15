@@ -1,21 +1,12 @@
-import { type } from "os";
-
 export default class Currency {
     constructor(idNumber){
         this.idNumber = idNumber;
         this.fetchCurrency();
-        this.name;
-        this.abbreviation ;
-        this.symbol ;
-        this.flagUrl;
-        this.buyingRate ;
-        this.medianRate ;
-        this.sellingRate ;
     }
 
-    fetchCurrency(){
+    async fetchCurrency(){
         var currencyUrl = `http://localhost:3000/curency?id=${this.idNumber}`;
-        fetch(currencyUrl)
+        await fetch(currencyUrl)
             .then(response => {
                 return response.json();
             })
@@ -28,9 +19,5 @@ export default class Currency {
                 this.medianRate = data[0].medianRate;
                 this.sellingRate = data[0].sellingRate;
                 })
-
-    }
-
-
-    
+    }   
 }
