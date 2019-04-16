@@ -5,7 +5,6 @@ export default class CurrencyList{
         this.initialCurrencyArrayIndexes = [1,2,3,4,5,6];
         this.initialCurrencyArray = []
         this.currencyArray=[];
-        this.addCurrencyButton;
     }
 
     fetchCurrency(i){
@@ -20,6 +19,7 @@ export default class CurrencyList{
     
         });
     }
+    
     addInitialCurrencyToTable(){
             this.initialCurrencyArrayIndexes.forEach(currencyId => {
                 this.fetchCurrency(currencyId)
@@ -35,10 +35,19 @@ export default class CurrencyList{
     }
 
     buttonFunctionality(){
-        this.addCurrencyButton = document.getElementsByClassName('add-currency-button')[0];
-        this.addCurrencyButton.addEventListener("click", ()=>{this.addCurrencyButton.style.background = "black"});
+        var addCurrencyButton = document.getElementsByClassName('add-currency-button')[0];
+        addCurrencyButton.addEventListener("click", ()=>{
+            var list = document.getElementsByClassName('currency-list')[0];
+            list.style.left='0%';
+        });
     }
 
+    /*spanFunctionality(){
+        var currencyPopOutList = document.getElementsByClassName('currency-list')[0];
+        currencyPopOutList.addEventListener("click", () => )
+         //on click se zove fetchCurrency koja vraca promis koji handlujemo tako da se upise vraceni objekat u currencyArray
+    }
+*/
 
     
 
@@ -178,17 +187,20 @@ export default class CurrencyList{
 
         var listItem = document.createElement('li');
         listItem.classList.add('list-item');
-        listItem.innerHTML = `${currency.name}`
         currencyList.appendChild(listItem);
+
+        var listItemSpan = document.createElement('span');
+        listItemSpan.classList.add('list-item-span');
+        listItemSpan.innerHTML = `${currency.name}  (${currency.symbol})`;
+
+        listItem.appendChild(listItemSpan);
         
-        
-/*
         var currencyImg = document.createElement('img');
         currencyImg.classList.add('flag');
         currencyImg.src = currency.flagUrl;
-        listItem.appendChild(currencyImg);*/
+        listItemSpan.appendChild(currencyImg);
 
-        
+        //spanFunctionality();
 
     }
 }

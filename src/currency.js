@@ -4,9 +4,9 @@ export default class Currency {
         this.fetchCurrency();
     }
 
-    async fetchCurrency(){
+    fetchCurrency(){
         var currencyUrl = `http://localhost:3000/curency?id=${this.idNumber}`;
-        await fetch(currencyUrl)
+        fetch(currencyUrl)
             .then(response => {
                 return response.json();
             })
