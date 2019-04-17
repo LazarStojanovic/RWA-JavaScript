@@ -27,6 +27,7 @@ body{
 .table-container{
     background-color: #222;
     overflow-x: hidden;
+    height: 100%;
 }
 .add-currency-button{
     background-color: #00b386;
@@ -35,12 +36,15 @@ body{
     font-size: 1.2rem;
     font-weight: bold;
     border: none;
-    border-top: 3px solid #222;
+    border-top: 1px solid #222;
     outline: none;
     width: 100%;
     cursor: pointer;
     transition: background-color 0.25s;
-    position: relative;
+    position: absolute  ;
+    bottom: 0;
+    height: 50px;
+    
 }
 
 .flag{
@@ -77,46 +81,64 @@ body{
 }
 
 /* Scrollbar */
-.table-container::-webkit-scrollbar {
+.currency-table-body::-webkit-scrollbar {
     width: 7px;
   }
-.table-container::-webkit-scrollbar-thumb {
-    background-color: #2d2d37;
-    border-bottom: 1rem solid #222;
+.currency-table-body::-webkit-scrollbar-thumb {
+    background-color: #f2f2f7;
+    border-bottom: 1rem solid rgb(252, 251, 251);
     border-color: black;
   }
 
 ul.currency-list{
     position: absolute;
     bottom: 0;
-    left: 0;
+    top: 0;
     background-color: #f1f1f1;
     color: #333;
     width: 100%;
     overflow-y: auto;
-    height: 100%;
+    height:90%;
     transition: all 0.25s;
     left: 110%;
     
     
 }
-
-.list-item{
-    height: 25px;
-    font-weight: bold;
-    margin-left: 2px;
-    margin-bottom: 4px;
-    margin-top: 4px;
-    vertical-align: middle;
+ul.currency-list li{
+    list-style: none;
+    padding: 0.75rem;
     border-bottom: 1px solid #ddd;
-
+    font-weight: bold;
 }
 
-.list-item-disabled{
-    opacity: 0.7;
+ul.currency-list li.disabled{
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
+ul.currency-list li:hover{
+    background-color: lightgray;
+}
+
+ .add-currency-button.open + ul.currency-list {
+    left: 0;
+  }
+.add-currency-button i {
+    position: absolute;
+    top: 0.6rem;
+    left: 30%;
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 0.25s;
+  }
+  
+  .add-currency-button.open {
+    background-color: #d9534f;
+  }
+  .add-currency-button.open i {
+    opacity: 1;
+    left: 1.25rem;
+  }
 
 
 
@@ -132,7 +154,14 @@ ul.currency-list{
 
 
 
-
+.currency-table-body{
+    height: 90%;
+    overflow-y:auto;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
 
 
 .tableContainer{

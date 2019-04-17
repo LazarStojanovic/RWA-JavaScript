@@ -2,7 +2,7 @@ import currency from './currency';
 
 export default class CurrencyList{
     constructor(){
-        this.initialCurrencyArrayIndexes = [1,2,3,4,5,6];
+        this.initialCurrencyArrayIndexes = [1,2,4,8,12,18,3,7,9];
         this.initialCurrencyArray = []
         this.currencyArray=[];
     }
@@ -37,8 +37,10 @@ export default class CurrencyList{
     buttonFunctionality(){
         var addCurrencyButton = document.getElementsByClassName('add-currency-button')[0];
         addCurrencyButton.addEventListener("click", ()=>{
+            /*
             var list = document.getElementsByClassName('currency-list')[0];
-            list.style.left='0%';
+            list.style.left='0%';*/
+            addCurrencyButton.classList.toggle("open");
         });
     }
 
@@ -92,7 +94,7 @@ export default class CurrencyList{
         addCurrencyButton.type = "button";
         addCurrencyButton.value = "Add Currency";
         addCurrencyButton.classList.add('add-currency-button');
-        wrapAll.appendChild(addCurrencyButton);
+        tableContainer.appendChild(addCurrencyButton);
         this.buttonFunctionality();
 
         var currencyList = document.createElement('ul');
@@ -120,7 +122,7 @@ export default class CurrencyList{
         
         var currencyTableHeader = document.createElement('th');
         currencyTableHeader.classList.add('currency-table-header');
-        currencyTableHeader.innerHTML = 'Country, Currency symbol';
+        currencyTableHeader.innerHTML = 'Country, Currency';
         currencyTableRow.appendChild(currencyTableHeader);
 
         var currencyTableHeader = document.createElement('th');
@@ -199,6 +201,11 @@ export default class CurrencyList{
         currencyImg.classList.add('flag');
         currencyImg.src = currency.flagUrl;
         listItemSpan.appendChild(currencyImg);
+
+        for(let i = 0;i<this.initialCurrencyArrayIndexes.length;i++){
+            if(currency.idNumber === this.initialCurrencyArrayIndexes[i])
+                listItem.classList.add('disabled');
+        }
 
         //spanFunctionality();
 
