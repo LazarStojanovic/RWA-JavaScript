@@ -3,7 +3,6 @@ export default class Currency {
         this.idNumber = idNumber;
         this.fetchCurrency();
     }
-
     fetchCurrency(){
         var currencyUrl = `http://localhost:3000/curency?id=${this.idNumber}`;
         fetch(currencyUrl)

@@ -2,7 +2,7 @@ import currency from './currency';
 
 export default class CurrencyList{
     constructor(){
-        this.initialCurrencyArrayIndexes = [1,2,4,8,12,18,3,7,9];
+        this.initialCurrencyArrayIndexes = [1,2,4,8,12,18];
         this.initialCurrencyArray = []
         this.currencyArray=[];
     }
@@ -34,29 +34,42 @@ export default class CurrencyList{
         }   
     }
 
-    buttonFunctionality(){
+    addCurrencyButtonFunctionality(){
         var addCurrencyButton = document.getElementsByClassName('add-currency-button')[0];
         addCurrencyButton.addEventListener("click", ()=>{
-            /*
-            var list = document.getElementsByClassName('currency-list')[0];
-            list.style.left='0%';*/
             addCurrencyButton.classList.toggle("open");
         });
     }
 
-    /*spanFunctionality(){
-        var currencyPopOutList = document.getElementsByClassName('currency-list')[0];
-        currencyPopOutList.addEventListener("click", () => )
-         //on click se zove fetchCurrency koja vraca promis koji handlujemo tako da se upise vraceni objekat u currencyArray
+    addCurrencyToTable(currencyList,currencyTableBody){
+        currencyList.addEventListener("click", ()=>{
+            var clickedListItem = event.target.closest("li");
+               if(!clickedListItem.classList.contains('disabled')){
+                    clickedListItem.classList.add("disabled");
+                    var num = clickedListItem.children[1].innerText;
+                    this.fetchCurrency(num)
+                        .then(currency => {setTimeout(()=>{ currencyTableBody.insertAdjacentHTML("beforeend",
+                                                `<tr class="currency-table-row" currency-name=${currency.abbreviation}>
+                                                        <td class="currency-table-data">${currency.abbreviation} <img class="flag" src="${currency.flagUrl}"></td>
+                                                        <td class="currency-table-data">${currency.buyingRate}</td>
+                                                        <td class="currency-table-data">${currency.medianRate}</td>
+                                                        <td class="currency-table-data">${currency.sellingRate}</td> 
+                                                        <td><input type="button" class="remove-currency-button-${currency.idNumber} newButton" value="X" tag=${currency.idNumber}></td>        
+                                                </tr>`)
+                                                },500)
+                                            setTimeout(()=>{
+                                                var button = document.getElementsByClassName(`remove-currency-button-${currency.idNumber}`)[0];
+                                                button.addEventListener("click",()=>{
+                                                    currencyList.querySelector(`[list-data=${currency.abbreviation}]`).classList.remove("disabled");
+                                                    var parent = button.parentNode.parentNode;
+                                                    parent.remove();
+                                                })
+                                                },600)
+                                            })
+                    }
+        });
     }
-*/
-
-    
-
-    //dugme koje dodaje valute u listu valuta(pritiskom na dugme se otvara slide window gde sve vide sve preostale valute(onclike u listi se brise ta valuta iz liste i dodaje u drugu))
-    
-    //dugme koje brise valutu iz liste(isto vazi za dugme koje brise valutu iz liste)
-
+   
     drawList()
     {
         var wrapAll = document.createElement('div');
@@ -83,10 +96,9 @@ export default class CurrencyList{
         this.drawTableHeaders(currencyTableBody);
 
         this.addInitialCurrencyToTable();
-
         setTimeout(()=>{
             this.initialCurrencyArray.forEach(currency => {
-                this.drawTableRows(currencyTableBody,currency)
+                this.drawTableRows(currencyTableBody,currencyList,currency)
             })
         },400)
          
@@ -95,21 +107,22 @@ export default class CurrencyList{
         addCurrencyButton.value = "Add Currency";
         addCurrencyButton.classList.add('add-currency-button');
         tableContainer.appendChild(addCurrencyButton);
-        this.buttonFunctionality();
+
+        this.addCurrencyButtonFunctionality();
 
         var currencyList = document.createElement('ul');
         currencyList.classList.add('currency-list')
         tableContainer.appendChild(currencyList);
 
         this.addCurrencyDb();
-
+        
         setTimeout(()=>{
             this.currencyArray.forEach(currency => {
                 this.drawCurrencyList(currency,currencyList)
             })
         },800)
         
-        
+        this.addCurrencyToTable(currencyList,currencyTableBody);
         
         
     }
@@ -146,10 +159,11 @@ export default class CurrencyList{
         currencyTableRow.appendChild(currencyTableHeader);
     }
 
-    drawTableRows(currencyTableBody,currency){
+    drawTableRows(currencyTableBody,currencyList,currency){
 
         var currencyTableRow = document.createElement('tr');
         currencyTableRow.classList.add('currency-table-row');
+        currencyTableRow.setAttribute("currency-name",`${currency.abbreviation}`)
         currencyTableBody.appendChild(currencyTableRow);
 
         var currencyTableData = document.createElement('td');
@@ -177,11 +191,27 @@ export default class CurrencyList{
         currencyTableData.innerHTML = currency.sellingRate;
         currencyTableRow.appendChild(currencyTableData);
 
+        var currencyTableData = document.createElement('td');
+        currencyTableData.classList.add('currency-table-data');
+        currencyTableRow.appendChild(currencyTableData);
+
+        var hiddenId =document.createElement('input');
+        hiddenId.type="hidden"
+        hiddenId.innerHTML = `${currency.idNumber}`;
+        hiddenId.classList.add('hiddenId');
+        currencyTableData.appendChild(hiddenId);
+
         var removeCurrencyButton = document.createElement('input');
         removeCurrencyButton.type = "button";
         removeCurrencyButton.value = "X";
         removeCurrencyButton.classList.add('remove-currency-button');
-        currencyTableRow.appendChild(removeCurrencyButton);
+        currencyTableData.appendChild(removeCurrencyButton);
+
+        removeCurrencyButton.addEventListener("click" ,()=>{
+            currencyList.querySelector(`[list-data=${currency.abbreviation}]`).classList.remove("disabled");
+            var parent = removeCurrencyButton.parentNode.parentNode;
+            parent.remove();
+        })
         
     } 
 
@@ -189,6 +219,7 @@ export default class CurrencyList{
 
         var listItem = document.createElement('li');
         listItem.classList.add('list-item');
+        listItem.setAttribute('list-data',`${currency.abbreviation}`);
         currencyList.appendChild(listItem);
 
         var listItemSpan = document.createElement('span');
@@ -202,12 +233,17 @@ export default class CurrencyList{
         currencyImg.src = currency.flagUrl;
         listItemSpan.appendChild(currencyImg);
 
+        var currencyHidden = document.createElement('input')
+        currencyHidden.type = "hidden";
+        currencyHidden.classList.add('hidden');
+        currencyHidden.innerHTML = `${currency.idNumber}`;
+        listItem.appendChild(currencyHidden);
+
         for(let i = 0;i<this.initialCurrencyArrayIndexes.length;i++){
             if(currency.idNumber === this.initialCurrencyArrayIndexes[i])
                 listItem.classList.add('disabled');
         }
-
-        //spanFunctionality();
+   
 
     }
 }
