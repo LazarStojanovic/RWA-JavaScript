@@ -21,8 +21,8 @@ export default class CurrencyList{
     }
     
     addInitialCurrencyToTable(){
-            this.initialCurrencyArrayIndexes.forEach(currencyId => {
-                this.fetchCurrency(currencyId)
+            this.initialCurrencyArrayIndexes.forEach( async (currencyId) => {
+                await this.fetchCurrency(currencyId)
                      .then(currency =>{this.initialCurrencyArray.push(currency)})
             });   
         }  
