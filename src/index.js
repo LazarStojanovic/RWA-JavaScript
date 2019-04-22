@@ -1,5 +1,5 @@
-import currencyList from './currencyList';
-import currency from './currency';
+import draw from './draw';
 
-var List1 = new currencyList();
-List1.drawList();
+
+var List = new draw();
+List.drawList();
