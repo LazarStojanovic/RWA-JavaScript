@@ -35,15 +35,15 @@ export default class draw{
         var initalCurrencyArray = [1,2,4,8,15,18];
         initalCurrencyArray.forEach(currencyId => {
             currencyListObj.returnCurrency(currencyId)
-                    .then(currency => this.drawTableRows(currencyTableBody,currencyLista,currency))
+                    .then(currency => this.drawTableRows(currencyTableBody,currencyLista,currency,converterContainer))
         });
-
+        //Crtanje add currency button elementa
         var addCurrencyButton = document.createElement('input');
         addCurrencyButton.type = "button";
         addCurrencyButton.value = "Add Currency";
         addCurrencyButton.classList.add('add-currency-button');
         tableContainer.appendChild(addCurrencyButton);
-
+        //Dodavanje event listener-a buttonu
         currencyListObj.addCurrencyButtonFunctionality();
         //Crtanje pop-up liste valuta   
         var currencyLista = document.createElement('ul');
@@ -55,8 +55,17 @@ export default class draw{
                 .then(data => {
                     data.forEach(currency =>this.drawCurrencyList(currency,currencyLista,initalCurrencyArray))
                 })
+        
+        //Crtanje currency converter-a
+        var converterContainer = document.createElement('div');
+        converterContainer.classList.add('converter-container');
+        converterContainer.classList.add("grid-container");
+        tableContainer.appendChild(converterContainer);
+
+        this.drawCurrencyConverter(converterContainer,initalCurrencyArray,currencyListObj);
+
         //Klikom na valuti u pop-up listi valuta dodaje se u tabelu valuta
-        currencyListObj.addCurrencyToTable(currencyLista,currencyTableBody);
+        currencyListObj.addCurrencyToTable(currencyLista,currencyTableBody,converterContainer);
     }
 
     drawTableHeaders(currencyTableBody){
@@ -91,7 +100,7 @@ export default class draw{
         currencyTableRow.appendChild(currencyTableHeader);
     }
 
-    drawTableRows(currencyTableBody,currencyLista,currency){
+    drawTableRows(currencyTableBody,currencyLista,currency,converterContainer){
 
         
         var currencyTableRow = document.createElement('tr');
@@ -142,6 +151,10 @@ export default class draw{
 
         removeCurrencyButton.addEventListener("click" ,()=>{
             currencyLista.querySelector(`[list-data=${currency.abbreviation}]`).classList.remove("disabled");
+            var option1 = converterContainer.childNodes[2].querySelector(`[option-name=${currency.abbreviation}]`)
+            option1.remove();
+            var option2 = converterContainer.childNodes[3].querySelector(`[option-name=${currency.abbreviation}]`)
+            option2.remove();
             var parent = removeCurrencyButton.parentNode.parentNode;
             parent.remove();
         })
@@ -180,4 +193,65 @@ export default class draw{
 
     }
     
+    drawCurrencyConverter(converterContainer,initalCurrencyArray,currencyListObj){
+       
+
+        var textInput1 = document.createElement('input');
+        textInput1 .type ='text';
+        textInput1 .classList.add('text-input1');
+        converterContainer.appendChild(textInput1 );
+
+        textInput1.addEventListener('input',()=>{
+                var selectedValue1 = converterContainer.querySelector('.select1').value;
+                var selectedValue2 = converterContainer.querySelector('.select2').value;
+                currencyListObj.returnCurrencyArray()
+                            .then(currencyArray => {
+                                var selectedCurrency1 = currencyArray.filter(currency => currency.name === selectedValue1);
+                                var selectedCurrency2 = currencyArray.filter( currency => currency.name == selectedValue2);
+                                textInput2.value = (parseFloat(textInput1.value)*parseFloat(selectedCurrency1[0].buyingRate))/parseFloat(selectedCurrency2[0].sellingRate);
+                                
+                            })
+                
+                
+        });
+
+        var textInput2 = document.createElement('input');
+        textInput2.type ='text';
+        textInput2.classList.add('text-input2');
+        converterContainer.appendChild(textInput2);
+
+        //textinput2 eventlistener
+
+        var select1 = document.createElement('select');
+        select1.classList.add("select");
+        select1.classList.add("select1");
+        converterContainer.appendChild(select1);
+
+        initalCurrencyArray.forEach(currencyId =>{ 
+                currencyListObj.returnCurrency(currencyId)
+                        .then(currency=>{
+                            var option = document.createElement('option');
+                            option.classList.add(`option`);
+                            option.setAttribute("option-name",`${currency.abbreviation}`);
+                            option.innerHTML = currency.name;
+                            select1.appendChild(option);
+                        })
+        })
+
+        var select2 = document.createElement('select');
+        select2.classList.add("select");
+        select2.classList.add("select2");
+        converterContainer.appendChild(select2);   
+        
+        initalCurrencyArray.forEach(currencyId =>{ 
+            currencyListObj.returnCurrency(currencyId)
+                    .then(currency=>{
+                        var option = document.createElement('option');
+                        option.classList.add(`option`);
+                        option.setAttribute("option-name",`${currency.abbreviation}`);
+                        option.innerHTML = currency.name;
+                        select2.appendChild(option);
+                    })
+    })
+    }
 }

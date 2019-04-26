@@ -77,7 +77,7 @@
         },
         {
             "id": 8,
-            "name": "Chinese Yuan Renminbi",
+            "name": "Chinese Yuan",
             "abbreviation": "CNY",
             "symbol": "\u00A5",
             "flagURL": "http://www.geonames.org/flags/l/cn.gif",
