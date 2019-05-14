@@ -221,7 +221,28 @@ th, td {
 }
 .text-input1{
     border: 1px solid rgba(0, 0, 0, 0.8);
-    background-color: #222;
+    background-color: #505562;
+    font-weight: bold;
+    color: white;
+    
+}
+
+.text-input2{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: #505562;
+    font-weight: bold;
+    color: white;
+}
+.select2{
+    background-color: #505562;
+    font-weight: bold;
+    color: white;
+}
+
+.select1{
+    background-color: #505562;
+    font-weight: bold;
+    color: white;
 }
 /*
 .text-input1{

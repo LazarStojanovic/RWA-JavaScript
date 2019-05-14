@@ -1,3 +1,5 @@
+import {fromEvent, Subject, interval, zip, from, forkJoin, timer } from 'rxjs';
+import { debounceTime, map, filter, scan, take, takeUntil, repeat, pairwise, sampleTime } from 'rxjs/operators';
 import currencyList from './currencyList';
 export default class draw{
     constructor(){
@@ -149,6 +151,7 @@ export default class draw{
         removeCurrencyButton.classList.add('remove-currency-button');
         currencyTableData.appendChild(removeCurrencyButton);
 
+
         removeCurrencyButton.addEventListener("click" ,()=>{
             currencyLista.querySelector(`[list-data=${currency.abbreviation}]`).classList.remove("disabled");
             var option1 = converterContainer.childNodes[2].querySelector(`[option-name=${currency.abbreviation}]`)
@@ -201,6 +204,27 @@ export default class draw{
         textInput1 .classList.add('text-input1');
         converterContainer.appendChild(textInput1 );
 
+        fromEvent(textInput1,'input')
+        .pipe(
+            debounceTime(200),
+            take(10),
+            
+        )
+        .subscribe(()=>{
+            var selectedValue1 = converterContainer.querySelector('.select1').value;
+            var selectedValue2 = converterContainer.querySelector('.select2').value;
+            currencyListObj.returnCurrencyArray()
+                        .then(currencyArray => {
+                            var selectedCurrency1 = currencyArray.filter(currency => currency.name === selectedValue1);
+                            var selectedCurrency2 = currencyArray.filter( currency => currency.name == selectedValue2);
+                            textInput2.value = (parseFloat(textInput1.value)*parseFloat(selectedCurrency1[0].buyingRate))/parseFloat(selectedCurrency2[0].sellingRate);
+                            
+                        })
+            
+            
+    })
+
+        /*
         textInput1.addEventListener('input',()=>{
                 var selectedValue1 = converterContainer.querySelector('.select1').value;
                 var selectedValue2 = converterContainer.querySelector('.select2').value;
@@ -214,7 +238,7 @@ export default class draw{
                 
                 
         });
-
+        */
         var textInput2 = document.createElement('input');
         textInput2.type ='text';
         textInput2.classList.add('text-input2');
